@@ -76,8 +76,12 @@ function isInArray(value, array) {
 
 function sendEmailSetup() {
   var emails = ["cguyman@tableau.com"]; // add your email here
-  var emailBody = "<h1 style='color:#f4b342;'>your datasource was updated</h1>"; // add HTML for email body here
+  var emailBody = getEmailBody();
   sendEmail(emails, emailBody);
+}
+
+function getEmailBody() {
+  return "<h1 style='color:#f4b342;'>your datasource was updated</h1>"; // add HTML for email body here
 }
 
 function sendEmail(emails, emailBody) {
