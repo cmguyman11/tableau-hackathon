@@ -8,7 +8,6 @@
   })
 })();
 
-<<<<<<< HEAD
 setInterval(refreshDataSource, 10000);
 
 // Refreshes the given dataSource.
@@ -23,7 +22,7 @@ setInterval(refreshDataSource, 10000);
        }
     });
   }
-=======
+
 var selectedWorksheets = [];
 /**
 * Shows the choose sheet UI. Once a sheet is selected, the data table for the sheet is shown
@@ -95,7 +94,6 @@ function sendEmailSetup() {
   var emailBody = "<h1 style='color:#f4b342;'>your datasource was updated</h1>"; // add HTML for email body here
   sendEmail(emails, emailBody);
 }
->>>>>>> bff35190cd017584969ae8477c93966525872886
 
 function sendEmail(emails, emailBody) {
   for (var i = 0; i < emails.length; i++) {
