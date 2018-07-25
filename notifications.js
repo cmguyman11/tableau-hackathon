@@ -109,7 +109,7 @@ var myContacts = [
     new Contact("Cate", "cguyman@tableau.com"),
     new Contact("Laurel", "laurel.haeger@outlook.com"),
     new Contact("Derek", "ddawson@tableau.com"),
-    new Contact("Arathi", "arathis269@utexas.edu")
+    new Contact("Arathi", "arathis269@utexas.edu"),
 ];
 
 var selectedContacts = [];
@@ -149,8 +149,11 @@ function showContactsDialog() {
 }
 
 function sendEmailSetup() {
-  var emails = ["cguyman@tableau.com"]; // add your email here
+  var emails = [];
   var emailBody = "<h1 style='color:#f4b342;'>your datasource was updated</h1>"; // add HTML for email body here
+  selectedContacts.forEach(function(contact) {
+    emails.push(contact.email);
+  });
   sendEmail(emails, emailBody);
 }
 
@@ -178,4 +181,16 @@ function sendEmail(emails, emailBody) {
   $.ajax(settings).done(function (response) {
     console.log(response);
   });
+}
+
+function showAddContactForum() {
+  $('#add_contacts_dialog').modal('toggle');
+}
+
+function closeAddContactDialog() {
+  var contactName = $('#name_input').val();
+  var contactEmail = $('#email_input').val();
+  var contact = new Contact(contactName, contactEmail);
+  myContacts.push(contact);
+  $('#add_contacts_dialog').modal('toggle');
 }
