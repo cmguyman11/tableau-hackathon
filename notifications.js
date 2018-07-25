@@ -4,9 +4,6 @@
   $(document).ready(function() {
     tableau.extensions.initializeAsync().then(function() {
       showCurrentlySelectedWorksheets();
-      var emails = ["derekhdawson@yahoo.com"]; // add your email here
-      var emailBody = "<h1 style='color:#f4b342;'>your datasource was updated</h1>"; // add HTML for email body here
-      sendEmail(emails, emailBody);
     })
   })
 })();
@@ -77,6 +74,12 @@ function isInArray(value, array) {
   return array.indexOf(value) > -1;
 }
 
+function sendEmailSetup() {
+  var emails = ["cguyman@tableau.com"]; // add your email here
+  var emailBody = "<h1 style='color:#f4b342;'>your datasource was updated</h1>"; // add HTML for email body here
+  sendEmail(emails, emailBody);
+}
+
 function sendEmail(emails, emailBody) {
   for (var i = 0; i < emails.length; i++) {
     emails[i] = "\"" + emails[i] + "\"";
@@ -97,7 +100,7 @@ function sendEmail(emails, emailBody) {
     "processData": false,
     "data": data
   }
-  
+
   $.ajax(settings).done(function (response) {
     console.log(response);
   });
