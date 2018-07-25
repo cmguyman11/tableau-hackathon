@@ -22,10 +22,16 @@
     <link rel="stylesheet" href="./notifications.css">
   </head>
   <body>
-    <button id="send" onclick="sendEmailSetup()">Send Email</button>
-    <button id="show sheets" onclick="showSheetsDialog()"> Select Notification Worksheet</button>
+    <div class="container">
+    <p1 class="title"> Configure Email Notifications </p1>
+    <button id="show sheets" onclick="showSheetsDialog()"> Select Notification Worksheets</button>
     <button id="show contacts" onclick="showContactsDialog()"> Select Contacts </button>
     <button id="add_contacts" onclick="showAddContactForum()"> Add Contacts </button>
+    <div class="sheet_name">Currently Selected Sheets:</div>
+    <div id="currently_selected_sheets"></div>
+    <div class="sheet_name">Currently Selected Contacts:</div>
+    <div id="currently_selected_contacts"></div>
+  </div>
     <!-- Choose Sheet Dialog (See https://www.w3schools.com/bootstrap/bootstrap_modal.asp for bootstrap dialog info) -->
   <div id="choose_sheet_dialog" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -69,9 +75,5 @@
         <button id="close_contact_dialog" onclick="closeAddContactDialog()">Apply</div>
   </div>
   </div>
-  <div>Currently Selected Sheets:</div>
-  <div id="currently_selected_sheets"></div>
-  <div>Currently Selected Contacts:</div>
-  <div id="currently_selected_contacts"></div>
   </body>
 </html>

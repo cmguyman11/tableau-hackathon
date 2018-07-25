@@ -9,3 +9,30 @@ div.DTS div.dataTables_scrollBody {
 .sheet_name {
   font-weight: bold;
 }
+
+body {
+  display: center;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+button {
+    background-color: #4996B2;
+    border-color: #367E9C;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 200px;
+    height: 75px;
+}

@@ -16,9 +16,7 @@ setInterval(refreshDataSource, 10000);
     dataSource.refreshAsync().then(function () {
        console.log(dataSource.name + ': Refreshed Successfully');
        if (oldDataSource != dataSource){
-         var emails = ["derekhdawson@yahoo.com"]; // add your email here
-         var emailBody = "<h1 style='color:#f4b342;'>your datasource was updated</h1>"; // add HTML for email body here
-         sendEmail(emails, emailBody);
+          sendEmailSetup();
        }
     });
   }
@@ -82,7 +80,7 @@ function refresh() {
 function showCurrentlySelectedWorksheets() {
   $('#currently_selected_sheets').empty();
   selectedWorksheets.forEach(function(worksheet) {
-    const div = $("<div class='selected_worksheet sheet_name'>" + worksheet.name +"</div>");
+    const div = $("<li class='selected_worksheet'>" + worksheet.name +"</li>");
     $('#currently_selected_sheets').append(div);
   });
 }
@@ -90,7 +88,7 @@ function showCurrentlySelectedWorksheets() {
 function showCurrentlySelectedContacts() {
   $('#currently_selected_contacts').empty();
   selectedContacts.forEach(function(contact) {
-    const div = $("<div class='selected_worksheet sheet_name'>" + contact.name +"</div>");
+    const div = $("<li class='selected_worksheet'>" + contact.name +"</li>");
     $('#currently_selected_contacts').append(div);
   });
 }
