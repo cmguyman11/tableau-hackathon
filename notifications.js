@@ -31,10 +31,6 @@ function showSheetsDialog() {
   // Clear out the existing list of sheets
   $('#choose_sheet_buttons').empty();
 
-  // Set the dashboard's name in the title
-  const dashboardName = tableau.extensions.dashboardContent.dashboard.name;
-  $('#choose_sheet_title').text(dashboardName);
-
   // The first step in choosing a sheet will be asking Tableau what sheets are available
   const worksheets = tableau.extensions.dashboardContent.dashboard.worksheets;
 
@@ -73,8 +69,14 @@ function closeDialog() {
   refresh();
 }
 
+function closeContactDialog() {
+  $('#choose_contacts_dialog').modal('toggle');
+  refresh();
+}
+
 function refresh() {
   showCurrentlySelectedWorksheets();
+  showCurrentlySelectedContacts();
 }
 
 function showCurrentlySelectedWorksheets() {
@@ -85,8 +87,65 @@ function showCurrentlySelectedWorksheets() {
   });
 }
 
+function showCurrentlySelectedContacts() {
+  $('#currently_selected_contacts').empty();
+  selectedContacts.forEach(function(contact) {
+    const div = $("<div class='selected_worksheet sheet_name'>" + contact.name +"</div>");
+    $('#currently_selected_contacts').append(div);
+  });
+}
+
 function isInArray(value, array) {
   return array.indexOf(value) > -1;
+}
+
+
+function Contact(name, email) {
+    this.name = name;
+    this.email= email;
+}
+
+var myContacts = [
+    new Contact("Cate", "cguyman@tableau.com"),
+    new Contact("Laurel", "laurel.haeger@outlook.com"),
+    new Contact("Derek", "ddawson@tableau.com"),
+    new Contact("Arathi", "arathis269@utexas.edu")
+];
+
+var selectedContacts = [];
+
+function showContactsDialog() {
+  console.log("here");
+  // Clear out the existing list of sheets
+  $('#choose_contact_buttons').empty();
+  // Next, we loop through all of these worksheets add add buttons for each one
+  myContacts.forEach(function (contact) {
+    // Declare our new button which contains the sheet name
+    const button = $("<input type='checkbox' class='btn btn-default btn-block'>" + contact.name +"</input>");
+    if (isInArray(contact, selectedContacts)) {
+      button.prop("checked", true);
+    }
+    // Create an event handler for when this button is clicked
+    button.click(function () {
+      // Get the worksheet name which was selected
+      const contactName = contact.name;
+
+      // Close the dialog and show the data table for this worksheet
+      $('#choose_notification_dialog').modal('toggle');
+      if (isInArray(contact, selectedContacts)) {
+        var index =selectedContacts.indexOf(contact);
+        selectedContacts.splice(index, 1);
+      } else {
+        selectedContacts.push(contact);
+      }
+    });
+
+    // Add our button to the list of worksheets to choose from
+    $('#choose_contact_buttons').append(button);
+  }, this);
+
+  // Show the dialog
+  $('#choose_contacts_dialog').modal('toggle');
 }
 
 function sendEmailSetup() {
