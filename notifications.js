@@ -12,7 +12,7 @@ setInterval(refreshDataSource, 10000);
 
 // Refreshes the given dataSource.
  function refreshDataSource (dataSource) {
-   oldDataSource = dataSource;
+   var oldDataSource = dataSource;
     dataSource.refreshAsync().then(function () {
        console.log(dataSource.name + ': Refreshed Successfully');
        if (oldDataSource != dataSource){
