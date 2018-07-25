@@ -15,14 +15,31 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 
     <!-- Extensions Library (this will be hosted on a CDN eventually) -->
-    <script src="../../lib/tableau-extensions-0.latest.js"></script>
+    <script src="../lib/tableau-extensions-0.latest.js"></script>
 
     <!-- Our extension's code -->
     <script src="./notifications.js"></script>
+    <link rel="stylesheet" href="./notifications.css">
   </head>
   <body>
+    <button id="send">Send Email</button>
+    <button id="show sheets" onclick="showSheetsDialog();"> Show Sheets Dialog</button>
+    <!-- Choose Sheet Dialog (See https://www.w3schools.com/bootstrap/bootstrap_modal.asp for bootstrap dialog info) -->
+  <div id="choose_sheet_dialog" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Choose a Sheet from <span class="sheet_name" id="choose_sheet_title"></span></h4>
+        </div>
+        <div class="modal-body">
+          <div id="choose_sheet_buttons"></div>
+        </div>
+        <button id="close" onclick="closeDialog()">Close</div>
+      </div>
     <div class="container">
       <p>notifications</p>
     </div>
+  <div id="currently_selected_sheets">Currently Selected Sheets</div>
   </body>
 </html>
